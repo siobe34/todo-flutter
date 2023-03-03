@@ -1,3 +1,3 @@
-# todo_app
+# To-do Application
 
-A new Flutter project.
+A minimal To-do Flutter application to learn the basics of Flutter and Dart.
