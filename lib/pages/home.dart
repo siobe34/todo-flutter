@@ -16,17 +16,24 @@ class HomePage extends StatelessWidget {
         title: const Text("To-do List"),
         elevation: 4,
       ),
-      body: ListView(
+      body: Column(
         children: [
-          const ListItem(text: 'List Item 1'),
-          const ListItem(text: 'List Item 2'),
-          const ListItem(text: 'List Item 3'),
-          const ListItem(text: 'List Item 4'),
-          const ListItem(text: 'List Item 5'),
-          const ListItem(text: 'List Item 5.1'),
-          const ListItem(text: 'List Item 5.2'),
-          const ListItem(text: 'List Item 5.3'),
-          for (var item in appState.currentList) ListItem(text: item),
+          Expanded(
+            child: ListView(
+              children: [
+                const ListItem(text: 'List Item 1'),
+                const ListItem(text: 'List Item 2'),
+                const ListItem(text: 'List Item 3'),
+                const ListItem(text: 'List Item 4'),
+                const ListItem(text: 'List Item 5'),
+                const ListItem(text: 'List Item 5.1'),
+                const ListItem(text: 'List Item 5.2'),
+                const ListItem(text: 'List Item 5.3'),
+                for (var item in appState.currentList) ListItem(text: item),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
