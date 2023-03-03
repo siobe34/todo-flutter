@@ -33,7 +33,7 @@ class AppState extends ChangeNotifier {
   void addItem(item) {
     if (currentList.contains(item)) return;
 
-    currentList.add(item);
+    currentList.insert(0, item);
 
     notifyListeners();
   }
