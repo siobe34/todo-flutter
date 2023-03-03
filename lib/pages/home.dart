@@ -4,12 +4,30 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/main.dart';
 import 'package:todo_app/widgets/listitem.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController listController = TextEditingController();
+
+  @override
+  void dispose() {
+    listController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<AppState>();
+    var theme = Theme.of(context);
+    var inputStyle = theme.textTheme.bodyMedium!.copyWith(
+      color: theme.colorScheme.primary,
+      fontSize: 18,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -21,25 +39,29 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                const ListItem(text: 'List Item 1'),
-                const ListItem(text: 'List Item 2'),
-                const ListItem(text: 'List Item 3'),
-                const ListItem(text: 'List Item 4'),
-                const ListItem(text: 'List Item 5'),
-                const ListItem(text: 'List Item 5.1'),
-                const ListItem(text: 'List Item 5.2'),
-                const ListItem(text: 'List Item 5.3'),
                 for (var item in appState.currentList) ListItem(text: item),
               ],
             ),
           ),
           const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: listController,
+              style: inputStyle,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Add an Item',
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
                 onPressed: () {
-                  appState.addItem('List Item 6');
+                  appState.addItem(listController.text);
                 },
                 child: const Text("Add Item"),
               ),
