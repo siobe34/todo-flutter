@@ -29,6 +29,7 @@ class App extends StatelessWidget {
 
 class AppState extends ChangeNotifier {
   var currentList = <String>[];
+  var archivesList = <String>[];
 
   void addItem(item) {
     if (currentList.contains(item)) return;
@@ -42,6 +43,12 @@ class AppState extends ChangeNotifier {
     if (!currentList.contains(item)) return;
 
     currentList.remove(item);
+
+    notifyListeners();
+  }
+
+  void moveToArchive(item) {
+    archivesList.add(item);
 
     notifyListeners();
   }
