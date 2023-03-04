@@ -40,9 +40,15 @@ class AppState extends ChangeNotifier {
   }
 
   void removeItem(item) {
-    if (!currentList.contains(item)) return;
+    if (!currentList.contains(item) && !archivesList.contains(item)) return;
 
-    currentList.remove(item);
+    if (currentList.contains(item)) {
+      currentList.remove(item);
+    }
+
+    if (archivesList.contains(item)) {
+      archivesList.remove(item);
+    }
 
     notifyListeners();
   }
