@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:todo_app/main.dart';
+import 'package:todo_app/widgets/archiveitem.dart';
 
 class ArchivesPage extends StatefulWidget {
   const ArchivesPage({super.key});
@@ -36,7 +37,7 @@ class _ArchivesPageState extends State<ArchivesPage> {
           Expanded(
             child: ListView(
               children: [
-                for (var item in appState.archivesList) Text(item),
+                for (var item in appState.archivesList) ArchiveItem(text: item),
               ],
             ),
           ),
