@@ -50,11 +50,21 @@ class _ListItemState extends State<ListItem> {
                 style: itemCompleted ? strikethroughTextStyle : normalTextStyle,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                appState.moveToArchive(widget.text);
-              },
-              icon: const Icon(Icons.archive),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    appState.moveToArchive(widget.text);
+                  },
+                  icon: const Icon(Icons.archive),
+                ),
+                IconButton(
+                  onPressed: () {
+                    appState.removeItem(widget.text);
+                  },
+                  icon: const Icon(Icons.delete_rounded),
+                ),
+              ],
             )
           ],
         ),
