@@ -42,14 +42,20 @@ class _ListItemState extends State<ListItem> {
                 setState(() {
                   itemCompleted = value!;
                 });
-
-                appState.moveToArchive(widget.text);
               },
             ),
-            Text(
-              widget.text,
-              style: itemCompleted ? strikethroughTextStyle : normalTextStyle,
+            Expanded(
+              child: Text(
+                widget.text,
+                style: itemCompleted ? strikethroughTextStyle : normalTextStyle,
+              ),
             ),
+            IconButton(
+              onPressed: () {
+                appState.moveToArchive(widget.text);
+              },
+              icon: const Icon(Icons.archive),
+            )
           ],
         ),
       ),
