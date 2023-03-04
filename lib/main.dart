@@ -52,4 +52,10 @@ class AppState extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void deleteArchives() {
+    archivesList.clear();
+
+    notifyListeners();
+  }
 }
