@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
     var appState = context.watch<AppState>();
     var theme = Theme.of(context);
     var inputStyle = theme.textTheme.bodyMedium!.copyWith(
-      color: theme.colorScheme.primary,
       fontSize: 18,
     );
 
@@ -62,17 +61,9 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 onPressed: () {
                   appState.addItem(listController.text);
+                  listController.clear();
                 },
                 child: const Text("Add Item"),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  appState.removeItem('List Item 6');
-                },
-                child: const Text("Remove Item"),
               ),
             ],
           ),
