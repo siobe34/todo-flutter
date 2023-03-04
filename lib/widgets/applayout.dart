@@ -48,7 +48,7 @@ class _AppLayoutState extends State<AppLayout> {
                 selectedIndex = value;
               });
             },
-            selectedIndex: 0,
+            selectedIndex: selectedIndex,
           ),
         ]),
       );
