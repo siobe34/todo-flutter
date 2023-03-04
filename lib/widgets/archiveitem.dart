@@ -33,11 +33,21 @@ class _ArchiveItemState extends State<ArchiveItem> {
               widget.text,
               style: normalTextStyle,
             )),
-            IconButton(
-              onPressed: () {
-                appState.removeItem(widget.text);
-              },
-              icon: const Icon(Icons.delete_rounded),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    appState.moveToCurrent(widget.text);
+                  },
+                  icon: const Icon(Icons.drive_file_move_rtl_rounded),
+                ),
+                IconButton(
+                  onPressed: () {
+                    appState.removeItem(widget.text);
+                  },
+                  icon: const Icon(Icons.delete_rounded),
+                ),
+              ],
             )
           ],
         ),
