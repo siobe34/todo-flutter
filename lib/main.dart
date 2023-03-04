@@ -48,6 +48,8 @@ class AppState extends ChangeNotifier {
   }
 
   void moveToArchive(item) {
+    currentList.remove(item);
+
     archivesList.add(item);
 
     notifyListeners();
